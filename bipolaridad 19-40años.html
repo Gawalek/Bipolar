@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipolaridad</title>
+    <style>
+        /* Estilo general para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            background-color: hsl(0, 0%, 94%); /* Color de fondo */
+            color: #333; /* Color del texto */
+            margin: 0; /* Margen exterior */
+            padding: 0; /* Relleno interior */
+            display: flex; /* Modelo de caja flex */
+            flex-direction: column; /* Dirección de los elementos flexibles */
+            background-image: url('imagenes/Fondo\ Azul.jpg'); /* Imagen de fondo */
+            background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+            background-repeat: no-repeat; /* No repetir la imagen de fondo */
+        }
+        /* Estilo del encabezado */
+        header {
+            background-color: #214f6d; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            padding: 20px; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+            border: 5px solid #385c7b; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+        }
+        /* Estilo de la navegación */
+        nav {
+            background-color: #555; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            padding: 10px; /* Relleno interior */
+        }
+        nav ul {
+            list-style-type: none; /* Sin estilo de lista */
+            margin: 0; /* Margen exterior */
+            padding: 0; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+        }
+        nav ul li {
+            display: inline; /* Elementos en línea */
+            margin-right: 20px; /* Margen a la derecha */
+        }
+        /* Estilo del título principal */
+        h1 {
+            margin-top: 0; /* Sin margen superior */
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            font-size: 36px; /* Tamaño del texto */
+            text-shadow: 2px 2px 4px #000000; /* Sombra del texto */
+        }
+        /* Estilo del contenido principal */
+        .content {
+            text-align: justify; /* Alineación justificada del texto */
+            border: 5px solid #385c7b; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+            max-width: 800px; /* Ancho máximo */
+            margin: 20px auto; /* Margen superior/inferior y centrado horizontal */
+            background-color: #f9f9f9; /* Color de fondo */
+            padding: 20px; /* Relleno interior */
+        }
+        /* Estilo de los botones */
+        .button {
+            background-color: #336699; /* Color de fondo */
+            border: none; /* Sin borde */
+            color: white; /* Color del texto */
+            padding: 15px 32px; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Elemento en línea */
+            font-size: 16px; /* Tamaño del texto */
+            margin: 4px 2px; /* Margen */
+            cursor: pointer; /* Cambia el cursor a una mano */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        /* Estilo de los párrafos */
+        p {
+            color: #333; /* Color del texto */
+            margin-top: 0; /* Sin margen superior */
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            font-size: 24px; /* Tamaño del texto */
+            text-shadow: 1px 1px 2px #000000; /* Sombra del texto */
+        }
+        /* Estilo de los títulos secundarios */
+        .t2 {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            font-size: 24px; /* Tamaño del texto */
+            text-shadow: 2px 2px 4px #000000; /* Sombra del texto */
+        }
+        /* Estilo de las respuestas */
+        .resp {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            font-size: 24px; /* Tamaño del texto para respuestas */
+            text-shadow: 1px 1px 2px #000000; /* Sombra del texto */
+        }
+        /* Estilo del contenedor de resultados */
+        #resultadoContainer {
+            margin-top: 20px; /* Margen superior */
+            font-size: 24px; /* Tamaño del texto */
+            color: #333; /* Color del texto */
+            display: none; /* Ocultar por defecto */
+            border: 5px solid #385c7b; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 20px; /* Relleno interior */
+            background-color: #f9f9f9; /* Color de fondo */
+        }
+        /* Estilo de las imágenes */
+        img {
+            max-width: 100%; /* Ancho máximo de la imagen */
+            height: auto; /* Altura automática */
+            display: block; /* Mostrar como bloque */
+            margin: 0 auto; /* Margen automático */
+            border-radius: 10px; /* Bordes redondeados */
+        }
+        /* Estilo de las preguntas */
+        .pregunta {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            font-size: 24px; /* Tamaño del texto para preguntas */
+            text-shadow: 1px 1px 2px #000000; /* Sombra del texto */
+            margin-bottom: 10px; /* Margen inferior */
+            color: #336699; /* Color azul similar al cuadro de arriba */
+        }
+
+        /* Estilo del juego de memoria */
+#juegoMemoria {
+    text-align: center;
+}
+#juegoCartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.carta {
+    width: 100px;
+    height: 100px;
+    background-color: #336699;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+<header> 
+    <h1 style="color: #ffffff;">Bipolaridad</h1>
+    <h2 style="font-family: 'Comic Sans MS', cursive; font-size: 24px;">¡Hola! Perteneces a la edad de adultos mayores, aprenderemos mucho aquí</h2>
+    <a href="file:///C:/Users/ferna/Desktop/Dise%C3%B1o%20web/Proyecto_Final/bipolaridad.html"><button class="button">Pagina principal</button></a>    
+    <button class="button" onclick="mostrarTest()">Test</button>
+    <button class="button" onclick="mostrarResultado()">Resultados</button>
+    <button class="button" onclick="iniciarJuego()">Iniciar Juego</button>
+    <a href="https://www.fundacionfass.org/general/el-trastorno-bipolar-en-personas-mayores/#:~:text=El%20trastorno%20bipolar%20en%20personas%20mayores%20es%20un%20problema%20de,personas%20de%20todas%20las%20edades."><button class="button">Mas informacion</button></a>
+</header>
+
+<div class="content">
+    <video controls width="100%" style="border-radius: 20px; margin-bottom: 20px;">
+        <source src="videos p/video bipolar 19-40.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+    
+    <div id="testContainer" style="display: none;">
+        <div class="t2"><h2>Test de bipolaridad</h2></div>
+        <form id="bipolarTestForm" onsubmit="return calcularResultado()">
+
+            <!-- Preguntas del test -->
+           
+            <!-- Pregunta 1 -->
+            <p class="pregunta"><label for="pregunta1">1.¿Has experimentado cambios drásticos en tu estado de ánimo en las últimas semanas, pasando de sentirte extremadamente feliz a sentirte muy triste sin razón aparente?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta1Nunca" name="pregunta1" value="0">
+                <label for="pregunta1Nunca"> Nunca</label>
+                <input type="radio" id="pregunta1AlgunasVeces" name="pregunta1" value="1">
+                <label for="pregunta1AlgunasVeces"> Algunas veces</label>
+                <input type="radio" id="pregunta1Aveces" name="pregunta1" value="2">
+                <label for="pregunta1Aveces"> A veces</label>
+                <input type="radio" id="pregunta1MuchasVeces" name="pregunta1" value="3">
+                <label for="pregunta1MuchasVeces"> Muchas veces</label><br>
+            </div><br>
+
+            <!-- Pregunta 2 -->
+            <p class="pregunta"><label for="pregunta2">2. ¿Te has sentido tan inquieto o irritable que otras personas te han comentado sobre ello?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta2Nunca" name="pregunta2" value="0">
+                <label for="pregunta2Nunca"> Nunca</label>
+                <input type="radio" id="pregunta2AlgunasVeces" name="pregunta2" value="1">
+                <label for="pregunta2AlgunasVeces"> Algunas veces</label>
+                <input type="radio" id="pregunta2Aveces" name="pregunta2" value="2">
+                <label for="pregunta2Aveces"> A veces</label>
+                <input type="radio" id="pregunta2MuchasVeces" name="pregunta2" value="3">
+                <label for="pregunta2MuchasVeces"> Muchas veces</label><br>
+            </div><br>
+
+            <!-- Pregunta 3 -->
+            <p class="pregunta"><label for="pregunta3">3. ¿Sientes que tus niveles de energía varían significativamente a lo largo del día, pasando de sentirte extremadamente activo a sentirte muy cansado en poco tiempo?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta3Nunca" name="pregunta3" value="0">
+                <label for="pregunta3Nunca"> Nunca</label>
+                <input type="radio" id="pregunta3AlgunasVeces" name="pregunta3" value="1">
+                <label for="pregunta3AlgunasVeces"> Algunas veces</label>
+                <input type="radio" id="pregunta3Aveces" name="pregunta3" value="2">
+                <label for="pregunta3Aveces"> A veces</label>
+                <input type="radio" id="pregunta3MuchasVeces" name="pregunta3" value="3">
+                <label for="pregunta3MuchasVeces"> Muchas veces</label><br>
+            </div><br>
+
+            <!-- Pregunta 4 -->
+            <p class="pregunta"><label for="pregunta4">4. ¿Has experimentado períodos de irritabilidad intensa o explosiones de enojo que no están relacionados con situaciones externas?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta4Nunca" name="pregunta4" value="0">
+                <label for="pregunta4Nunca"> Nunca</label>
+                <input type="radio" id="pregunta4AlgunasVeces" name="pregunta4" value="1">
+                <label for="pregunta4AlgunasVeces"> Algunas veces</label>
+                <input type="radio" id="pregunta4Aveces" name="pregunta4" value="2">
+                <label for="pregunta4Aveces"> A veces</label>
+                <input type="radio" id="pregunta4MuchasVeces" name="pregunta4" value="3">
+                <label for="pregunta4MuchasVeces"> Muchas veces</label><br>
+            </div><br>
+
+            <!-- Pregunta 5 -->
+            <p class="pregunta"><label for="pregunta5">5. ¿Te has sentido tan deprimido que has tenido dificultades para llevar a cabo tus actividades diarias?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta5Nunca" name="pregunta5" value="0">
+                <label for="pregunta5Nunca"> Nunca</label>
+                <input type="radio" id="pregunta5AlgunasVeces" name="pregunta5" value="1">
+                <label for="pregunta5AlgunasVeces"> Algunas veces</label>
+                <input type="radio" id="pregunta5Aveces" name="pregunta5" value="2">
+                <label for="pregunta5Aveces"> A veces</label>
+                <input type="radio" id="pregunta5MuchasVeces" name="pregunta5" value="3">
+                <label for="pregunta5MuchasVeces"> Muchas veces</label><br>
+            </div><br>
+            <img src="animaciones/animacion bipolar.gif" style="width: 500px; height: 500px;">
+        </form>
+    </div>
+</div>
+
+<div id="resultadoContainer" class="content">
+    <div class="t2"><h2>Resultado</h2></div>
+    <div id="resultado" class="t2"></div> <!-- Elemento para mostrar el resultado -->
+</div>
+
+<div class="content" id="juegoMemoria" style="display: none;">
+    <h2>Juego de Memoria</h2>
+    <p>Encuentra las parejas de cartas relacionadas con la bipolaridad.</p>
+    <div id="juegoCartas">
+        <!-- Las cartas del juego se generarán dinámicamente con JavaScript -->
+    </div>
+    
+</div>
+
+
+<div class="content">
+    <h2>Bipolaridad en adultos mayores</h2>
+    <p>Para adaptar el contenido sobre bipolaridad para adultos mayores, es importante tener en cuenta sus necesidades y preferencias. Aquí hay algunas sugerencias:<br><br>
+
+        1._Lenguaje claro y sencillo: Utiliza un lenguaje claro y sencillo, evitando tecnicismos médicos complejos que puedan resultar confusos.<br><br>
+        
+        2._Mayor énfasis en la estabilidad emocional: Destaca la importancia de mantener una estabilidad emocional en la vida diaria y ofrece consejos prácticos para manejar cambios de humor.<br><br>
+        
+        3._Enfoque en el autocuidado: Proporciona información sobre estrategias de autocuidado y técnicas de afrontamiento que sean accesibles y fáciles de implementar para adultos mayores.<br><br>
+        
+        4._Historias y testimonios: Incluye historias y testimonios de personas mayores que hayan enfrentado el trastorno bipolar, resaltando cómo han aprendido a vivir con la condición y mantener una buena calidad de vida.<br><br>
+        
+        5._Recursos específicos para adultos mayores: Ofrece recursos específicos, como grupos de apoyo para personas mayores con trastorno bipolar, servicios de asesoramiento adaptados a sus necesidades, y programas de ejercicio físico y actividades recreativas que promuevan el bienestar emocional.<br><br>
+        
+        Al adaptar el contenido de esta manera, se puede proporcionar información relevante y útil sobre bipolaridad para adultos mayores, ayudándoles a comprender la condición y a gestionarla de manera efectiva en su vida cotidiana.</p>
+</div>
+
+<script src="Scrips/scrip 19-40.js"></script>
+
+</body>
+</html>

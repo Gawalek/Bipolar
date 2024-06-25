@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipolaridad</title>
+    <style>
+        /* Estilo general para el cuerpo de la página */
+        body {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: url('imagenes/FondoAdolecente.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Estilo del encabezado */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 20px;
+            width: 100%;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo del título principal */
+        h1 {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 36px;
+            text-shadow: 4px 4px 6px #000000;
+            display: inline-block;
+            padding: 7px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            border-radius: 10px;
+        }
+
+        /* Estilo del subtítulo */
+        h2 {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        /* Estilo del contenido principal */
+        .content {
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            border: 5px solid #000000;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo de los botones */
+        .button {
+            font-family: 'Comic Sans MS', cursive;
+            background-color: #ff4081;
+            border: none;
+            color: #ffffff;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            border-radius: 10px;
+        }
+
+        /* Estilo de los botones cuando están activos */
+        .button:active {
+            transform: translateY(3px);
+        }
+
+        .button:hover {
+            background-color: #e91e63;
+        }
+
+        /* Estilo de los títulos secundarios */
+        .t2 {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px #000000;
+        }
+
+        /* Estilo de las respuestas */
+        .resp {
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 20px;
+            text-shadow: 1px 1px 2px #000000;
+        }
+
+        /* Estilo del contenedor de resultados */
+        #resultadoContainer {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+            display: none;
+            border: 5px solid #000000;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: rgba(240, 240, 240, 0.9);
+        }
+        .mood-display {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    position: relative;
+    text-align: center;
+}
+
+.mood-display img {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.mood-display.feliz img {
+    transform: scale(1.2);
+}
+
+.mood-display.triste img {
+    filter: grayscale(100%);
+}
+
+    </style>
+</head>
+<body>
+
+<header> 
+    <h1>Bipolaridad</h1><br>
+    <h2>¡Hola! Si perteneces a la edad adolescente, aprenderás sobre la bipolaridad aquí</h2><br>
+    <a href="file:///C:/Users/ferna/Desktop/Dise%C3%B1o%20web/Proyecto_Final/bipolaridad.html"><button class="button">Página principal</button></a>    
+    <button class="button" onclick="mostrarTest()">Test</button>
+    <button class="button" onclick="mostrarResultado()">Resultados</button>
+    <button class="button" onclick="iniciarJuego()">Iniciar Juego</button>
+    <a href="https://www.unobrain.com/"><button class="button">Juegos</button></a>
+</header>
+
+<div class="content">
+    <video controls width="100%" style="border-radius: 20px; margin-bottom: 20px;">
+        <source src="videos p/video bipolar 13-18.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+    
+    <div id="testContainer" style="display: none;">
+        <div class="t2"><h2>Test de bipolaridad</h2></div>
+        <form id="bipolarTestForm" onsubmit="return calcularResultado()">
+            <!-- Pregunta 1 -->
+            <p><label for="pregunta1">1. ¿Tienes cambios de humor extremos?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta1Nunca" name="pregunta1" value="0">
+                <label for="pregunta1Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta1AlgunasVeces" name="pregunta1" value="1">
+                <label for="pregunta1AlgunasVeces">🤔 Algunas veces</label>
+                <input type="radio" id="pregunta1Aveces" name="pregunta1" value="2">
+                <label for="pregunta1Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta1MuchasVeces" name="pregunta1" value="3">
+                <label for="pregunta1MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            
+            <!-- Pregunta 2 -->
+            <p><label for="pregunta2">2. ¿Tienes períodos de tiempo en los que te sientes muy feliz y otros en los que te sientes muy triste?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta2Nunca" name="pregunta2" value="0">
+                <label for="pregunta2Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta2AlgunasVeces" name="pregunta2" value="1">
+                <label for="pregunta2AlgunasVeces">🤔 Algunas veces</label>
+                <input type="radio" id="pregunta2Aveces" name="pregunta2" value="2">
+                <label for="pregunta2Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta2MuchasVeces" name="pregunta2" value="3">
+                <label for="pregunta2MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            
+            <!-- Pregunta 3 -->
+            <p><label for="pregunta3">3. ¿Te sientes con mucha energía algunas veces y muy cansado otras?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta3Nunca" name="pregunta3" value="0">
+                <label for="pregunta3Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta3AlgunasVeces" name="pregunta3" value="1">
+                <label for="pregunta3AlgunasVeces">🤔 Algunas veces</label>
+                <input type="radio" id="pregunta3Aveces" name="pregunta3" value="2">
+                <label for="pregunta3Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta3MuchasVeces" name="pregunta3" value="3">
+                <label for="pregunta3MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            
+            <!-- Pregunta 4 -->
+            <p><label for="pregunta4">4. ¿Sientes que no puedes controlar tus emociones?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta4Nunca" name="pregunta4" value="0">
+                <label for="pregunta4Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta4AlgunasVeces" name="pregunta4" value="1">
+                <label for="pregunta4AlgunasVeces">🤔 Algunas veces</label>
+                <input type="radio" id="pregunta4Aveces" name="pregunta4" value="2">
+                <label for="pregunta4Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta4MuchasVeces" name="pregunta4" value="3">
+                <label for="pregunta4MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            
+            <!-- Pregunta 5 -->
+            <p><label for="pregunta5">5. ¿Has experimentado períodos en los que te sientes tan deprimido que has perdido interés en las cosas que solías disfrutar, seguido de momentos en los que estás lleno de entusiasmo y energía?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta5Nunca" name="pregunta5" value="0">
+                <label for="pregunta5Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta5AlgunasVeces" name="pregunta5" value="1">
+                <label for="pregunta5AlgunasVeces">🤔 Algunas veces</label>
+                <input type="radio" id="pregunta5Aveces" name="pregunta5" value="2">
+                <label for="pregunta5Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta5MuchasVeces" name="pregunta5" value="3">
+                <label for="pregunta5MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            <center><img src="animaciones/animacion bipolar.gif" style="width: 100%; max-width: 500px; height: auto;"></center>
+            <button type="submit" class="button">Calcular Resultado</button>
+        </form>
+    </div>
+</div>
+
+<div id="resultadoContainer" class="content">
+    <div class="t2"><h2>Resultado</h2></div>
+    <div id="resultado" class="t2"></div>
+</div>
+
+<div id="gameContainer" class="content" style="display: none;">
+    <h1>Juego de Cambios de Ánimo</h1>
+    <p>Pulsa las teclas 'F' y 'J' rápidamente para simular cambios de estado de ánimo.</p>
+    <div id="moodDisplay" class="mood-display">
+        <img id="moodImage" src="imagenes/neutral.jpg" alt="Estado Neutral">
+    </div>
+</div>
+
+<div class="content">
+    <h1>¿Qué es bipolaridad juvenil?</h1>
+    <p>La bipolaridad, también conocida como trastorno bipolar, es una condición mental que se caracteriza por cambios extremos en el estado de ánimo, la energía y la actividad. Las personas con trastorno bipolar experimentan episodios de manía, donde se sienten eufóricas, llenas de energía y a veces irritables, seguidos de episodios depresivos, que son períodos de profunda tristeza, desesperanza y falta de interés en las actividades cotidianas.</p>
+    <p>Estos episodios pueden durar desde días hasta semanas o incluso meses y pueden afectar significativamente la vida diaria y las relaciones interpersonales de quienes los experimentan.</p>
+    <p>Es importante tener en cuenta que el trastorno bipolar puede variar en gravedad y presentación en diferentes personas. Algunos pueden experimentar episodios más frecuentes y severos, mientras que otros pueden tener períodos de estabilidad más prolongados entre los episodios.</p>
+    <h3>Síntomas comunes de la fase maníaca incluyen:</h3>
+    <ul>
+        <li>Sentimientos de euforia o extrema felicidad</li>
+        <li>Aumento de la energía y actividad</li>
+        <li>Pensamiento acelerado o "mente corriendo"</li>
+        <li>Toma de decisiones impulsiva o riesgosa</li>
+        <li>Irritabilidad o agitación</li>
+    </ul>
+    <h3>Síntomas de la fase depresiva pueden incluir:</h3>
+    <ul>
+        <li>Sentimientos persistentes de tristeza, vacío o desesperanza</li>
+        <li>Pérdida de interés en actividades que solían ser placenteras</li>
+        <li>Cambios en el apetito o peso</li>
+        <li>Fatiga o falta de energía</li>
+        <li>Problemas para concentrarse o tomar decisiones</li>
+    </ul>
+    <p>El tratamiento para el trastorno bipolar generalmente implica una combinación de medicamentos estabilizadores del estado de ánimo, psicoterapia y cambios en el estilo de vida. Es importante buscar ayuda profesional si experimentas síntomas de bipolaridad, ya que el tratamiento adecuado puede ayudar a controlar los síntomas y mejorar la calidad de vida.</p>
+</div>
+
+<script src="Scrips/Scrip 13-18.js"></script>
+
+</body>
+</html>

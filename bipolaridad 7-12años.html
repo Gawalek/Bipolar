@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipolaridad</title>
+    <style>
+        /* Estilo general para el cuerpo de la página */
+        body {
+            font-family: Arial, sans-serif; /* Fuente de texto */
+            background-color: #f0f0f0; /* Color de fondo */
+            color: #333; /* Color del texto */
+            margin: 0; /* Margen exterior */
+            padding: 0; /* Relleno interior */
+            display: flex; /* Modelo de caja flex */
+            flex-direction: column; /* Dirección de los elementos flexibles */
+            background-image: url('imagenes/fondo\ niño.jpg'); /* Imagen de fondo */
+            background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
+            background-repeat: no-repeat; /* No repetir la imagen de fondo */
+        }
+        /* Estilo del encabezado */
+        header {
+            background-color: #077fff; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            padding: 20px; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+            border: 5px solid #62ddff; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+        }
+        /* Estilo de la navegación */
+        nav {
+            background-color: #333; /* Color de fondo */
+            color: #fff; /* Color del texto */
+            padding: 10px; /* Relleno interior */
+        }
+        nav ul {
+            list-style-type: none; /* Sin estilo de lista */
+            margin: 0; /* Margen exterior */
+            padding: 0; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+        }
+        nav ul li {
+            display: inline; /* Elementos en línea */
+            margin-right: 20px; /* Margen a la derecha */
+        }
+        /* Estilo del título principal */
+        h1 {
+            margin-top: 0; /* Sin margen superior */
+            font-family: 'Comic Sans MS', cursive; /* Fuente de texto */
+            font-size: 36px; /* Tamaño del texto */
+            text-shadow: 2px 2px 4px #000000; /* Sombra del texto */
+        }
+        /* Estilo del contenido principal */
+        .content {
+            text-align: center; /* Alineación del texto */
+            border: 5px solid #62ddff; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+            max-width: 800px; /* Ancho máximo */
+            margin: 20px auto; /* Margen superior/inferior y centrado horizontal */
+            background-color: #f0f0f0; /* Color de fondo */
+            padding: 20px; /* Relleno interior */
+        }
+        /* Estilo de los botones */
+        .button {
+            background-color: #009dff; /* Color de fondo */
+            border: none; /* Sin borde */
+            color: white; /* Color del texto */
+            padding: 15px 32px; /* Relleno interior */
+            text-align: center; /* Alineación del texto */
+            text-decoration: none; /* Sin subrayado */
+            display: inline-block; /* Elemento en línea */
+            font-size: 16px; /* Tamaño del texto */
+            margin: 4px 2px; /* Margen */
+            cursor: pointer; /* Cambia el cursor a una mano */
+        }
+        /* Estilo de los párrafos */
+        p {
+            color: #009dff; /* Color del texto */
+            margin-top: 0; /* Sin margen superior */
+            font-family: 'Comic Sans MS', cursive; /* Fuente de texto */
+            font-size: 36px; /* Tamaño del texto */
+           text-shadow: 1px 1px 2px #000000; /* Sombra del texto */
+        }
+        /* Estilo de los títulos secundarios */
+        .t2 {
+            font-family: 'Comic Sans MS', cursive; /* Fuente de texto */
+            font-size: 36px; /* Tamaño del texto */
+            text-shadow: 2px 2px 4px #000000; /* Sombra del texto */
+        }
+        /* Estilo de las respuestas */
+        .resp {
+            font-family: 'Comic Sans MS', cursive; /* Fuente de texto */
+            font-size: 25px; /* Tamaño del texto */
+            text-shadow: 1px 1px 2px #000000; /* Sombra del texto */
+        }
+        /* Estilo del contenedor de resultados */
+        #resultadoContainer {
+            margin-top: 20px; /* Margen superior */
+            font-size: 24px; /* Tamaño del texto */
+            color: #333; /* Color del texto */
+            display: none; /* Ocultar por defecto */
+            border: 5px solid #62ddff; /* Borde */
+            border-radius: 20px; /* Bordes redondeados */
+            padding: 20px; /* Relleno interior */
+            background-color: #f0f0f0; /* Color de fondo */
+        }
+        #iconoMusica {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            cursor: move;
+            z-index: 9999;
+        }
+
+        #iconoMusica img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%; /* Para que el icono sea circular */
+        }
+    </style>
+</head>
+<body>
+
+<header> 
+    <h1 style="color: #ffffff;">Bipolaridad</h1>
+    <h2 style="font-family: 'Comic Sans MS', cursive; font-size: 24px;">¡Hola! Si perteneces a la edad infantil, nos divertiremos mucho aquí</h2>
+    <a href="file:///C:/Users/ferna/Desktop/Dise%C3%B1o%20web/Proyecto_Final/bipolaridad.html"><button class="button">Pagina principal</button></a>    
+    <button class="button" onclick="mostrarTest()">Test</button>
+    <button class="button" onclick="mostrarResultado()">Resultados</button>
+   
+
+
+</header>
+
+
+<div class="content">
+    <video controls width="100%" style="border-radius: 20px; margin-bottom: 20px;">
+        <source src="videos p/vidio bipolar.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de videos.
+    </video>
+    
+    <div id="testContainer" style="display: none;">
+        <div class="t2"><h2>Test de bipolaridad</h2></div>
+        <form id="bipolarTestForm" onsubmit="return calcularResultado()">
+
+            <!-- Preguntas del test -->
+           
+            <!-- Pregunta 1 -->
+            <p><label for="pregunta1">1. En el último mes, ¿Te dan ganas de salir a jugar?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta1Nunca" name="pregunta1" value="0">
+                <label for="pregunta1Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta1AlgunasVeces" name="pregunta1" value="1">
+                <label for="pregunta1AlgunasVeces">🤔 Algunas veces <p> </p></label>
+                <input type="radio" id="pregunta1Aveces" name="pregunta1" value="2">
+                <label for="pregunta1Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta1MuchasVeces" name="pregunta1" value="3">
+                <label for="pregunta1MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+             
+            <!-- Pregunta 2 -->
+            <p><label for="pregunta2">2. En la escuela, ¿con qué frecuencia te sientes triste sin ninguna razón?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta2Nunca" name="pregunta2" value="0">
+                <label for="pregunta2Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta2AlgunasVeces" name="pregunta2" value="1">
+                <label for="pregunta2AlgunasVeces">🤔 Algunas veces <p> </p></label>
+                <input type="radio" id="pregunta2Aveces" name="pregunta2" value="2">
+                <label for="pregunta2Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta2MuchasVeces" name="pregunta2" value="3">
+                <label for="pregunta2MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+        
+            <!-- Pregunta 3 -->
+            <p><label for="pregunta3">3. En la escuela, ¿Tus compañeros te molestan?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta3Nunca" name="pregunta3" value="0">
+                <label for="pregunta3Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta3AlgunasVeces" name="pregunta3" value="1">
+                <label for="pregunta3AlgunasVeces">🤔 Algunas veces <p> </p></label>
+                <input type="radio" id="pregunta3Aveces" name="pregunta3" value="2">
+                <label for="pregunta3Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta3MuchasVeces" name="pregunta3" value="3">
+                <label for="pregunta3MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <p><label for="pregunta4">4. En casa, ¿sientes que nadie de tu familia te entiende?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta4Nunca" name="pregunta4" value="0">
+                <label for="pregunta4Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta4AlgunasVeces" name="pregunta4" value="1">
+                <label for="pregunta4AlgunasVeces">🤔 Algunas veces <p> </p></label>
+                <input type="radio" id="pregunta4Aveces" name="pregunta4" value="2">
+                <label for="pregunta4Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta4MuchasVeces" name="pregunta4" value="3">
+                <label for="pregunta4MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <p><label for="pregunta5">5. En el último mes, ¿con qué frecuencia has sentido episodios de hiperactividad?</label><br></p>
+            <div class="resp">
+                <input type="radio" id="pregunta5Nunca" name="pregunta5" value="0">
+                <label for="pregunta5Nunca">🚫 Nunca</label>
+                <input type="radio" id="pregunta5AlgunasVeces" name="pregunta5" value="1">
+                <label for="pregunta5AlgunasVeces">🤔 Algunas veces <p> </p></label>
+                <input type="radio" id="pregunta5Aveces" name="pregunta5" value="2">
+                <label for="pregunta5Aveces">😐 A veces</label>
+                <input type="radio" id="pregunta5MuchasVeces" name="pregunta5" value="3">
+                <label for="pregunta5MuchasVeces">😊 Muchas veces</label><br>
+            </div>
+            <img src="animaciones/animacion bipolar.gif" style="width: 500px; height: 500px;">
+                
+            <!--<button type="submit" class="button">Calcular Resultado</button>-->
+        </form>
+    </div>
+</div>
+
+<div id="resultadoContainer" class="content">
+    <div class="t2"><h2>Resultado</h2></div>
+    <div id="resultado" class="t2"></div> <!-- Elemento para mostrar el resultado -->
+</div>
+
+
+<div id="testContainer"  class="content">
+    <div class="t2"><h2>Juego interactivo sobre la bipolaridad</h2></div>
+    <p>¡Hola! Vamos a aprender sobre la bipolaridad de una manera divertida.</p>
+    <p>Responde las siguientes preguntas a partir del siguiente video:</p>
+    <video controls width="50%" style="border-radius: 2px; margin-bottom: 2px;">
+        <source src="videos p/Video_Animacion_Niños.mp4" type="video/mp4">
+    </video>
+    <p><strong>Pregunta 1:</strong> ¿Qué es la bipolaridad?</p>
+    <button class="button" onclick="mostrarRespuesta('La bipolaridad es un trastorno mental que causa cambios extremos en el estado de ánimo.', 'respuesta1')">Respuesta</button>
+    <div id="respuesta1" class="resp"></div>
+    
+    <p><strong>Pregunta 2:</strong> ¿Cuáles son los dos estados principales de la bipolaridad?</p>
+    <button class="button" onclick="mostrarRespuesta('Los dos estados principales son manía y depresión.', 'respuesta2')">Respuesta</button>
+    <div id="respuesta2" class="resp"></div>
+    
+    <p><strong>Pregunta 3:</strong> ¿Cómo se puede ayudar a una persona con bipolaridad?</p>
+    <button class="button" onclick="mostrarRespuesta('Se puede ayudar siendo comprensivo, apoyando el tratamiento médico y hablando abiertamente sobre los sentimientos.', 'respuesta3')">Respuesta</button>
+    <div id="respuesta3" class="resp"></div>
+</div>
+
+
+<div class="content">
+    <h2>¿Qué es bipolaridad?</h2>
+    <p>La bipolaridad es un trastorno mental caracterizado por cambios extremos en el estado de ánimo, la energía y los niveles de actividad. Las personas con trastorno bipolar pueden experimentar episodios de manía, que son periodos de alta energía, euforia o irritabilidad, y episodios de depresión, que son periodos de tristeza, apatía o desesperanza.</p>
+</div>
+
+<script src="Scrips/Scrip 7-12.js"></script>
+
+<audio id="miAudio" src="Audios/Audio-niños.mp3"></audio>
+
+</body>
+</html>
